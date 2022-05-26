@@ -1,0 +1,63 @@
+/* top navigator bar */
+
+.navdiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+#cart {
+    display: flex;
+    border: red;
+    border-style: dashed;
+}
+
+#title {
+    display: flex;
+    width: 33%;
+    border: green;
+    border-style: dashed;
+    text-align: center;
+}
+
+.productButton {
+    display: flex;
+    width: 33%;
+    border: blue;
+    border-style: dashed;
+}
+
+
+/* product list*/
+
+.body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.productbox {
+    display: flex;
+    justify-items: space-between;
+}
+
+.image {
+    display: flex;
+    border-color: blueviolet;
+    border-style: dashed;
+    width: 10%;
+}
+
+h4 {
+    display: flex;
+}
+
+.description {
+    display: flex;
+}
+
+cartButton {
+    display: flex;
+}
+
+input {
+    display: flex;
+}
