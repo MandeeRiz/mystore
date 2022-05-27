@@ -26,8 +26,12 @@ const getFormNewProduct = (req, res) => {
 }
 
 const postNewProduct = (req, res) => {
-    res.status(200);
-    res.render("You created a new product")
+    res.status(500).json({
+        status: "error",
+        message: "undefined route"
+    });
+
+    //("You created a new product")
 }
 
 const getSingleProduct = (req, res) => {
@@ -57,7 +61,7 @@ const putSingleProduct = () => {
 const productRouter = express.Router();
 
 //puts efarm/products in front of all route handlers
-app.use("efarm/products", productRouter);
+app.use("/efarm/products", productRouter);
 
 //refectored route handlers
 //Shows all products (index.ejs)
@@ -67,7 +71,6 @@ productRouter.route("/").get(getAllProducts)
 
 //sends form to create a new product
 productRouter.route("/new").get(getFormNewProduct)
-
 
 //get a single product
 //delete an individual product
