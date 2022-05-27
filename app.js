@@ -43,11 +43,15 @@ const getEditProductForm = (req, res) => {
 }
 
 const deleteSingleProduct = (req, res) => {
-    res.send("<h1>{req.params.id} has been deleted</h1>");
-    res.status(200);
+    res.status(500).json({
+        status: "fail",
+        data: {
+            message: "undefined routes",
+        },
+    });
 }
 
-const putSingleProduct = () => {
+const putSingleProduct = (req, res) => {
     res.status(500).json({
         status: "fail",
         data: {
