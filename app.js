@@ -1,52 +1,85 @@
 //require express
 const express = require("express");
+const res = require("express/lib/response");
 
 //store express methods in app variable
 const app = express();
 
-//use stylesheet
-app.use(express.static(`${__dirname}/public`));
+// require path for images and css to be used with .ejs files
+const path = require("path");
 
 
+//middleware
+//use stylesheet and images 
+app.use(express.static(path.join(__dirname, "public")));
 
 //run view engine
 app.set("view engine", "ejs");
 
-//create route handlers
-app.get("/products/", (req, res) => {
-    //eventually will send all html for main page
+//refactor route controllers
+const getAllProducts = (req, res) => {
     res.render("index");
-});
+}
 
-app.get("/products/new", (req, res) => {
-    //eventually will send an html form for creating a new product
+const getFormNewProduct = (req, res) => {
     res.send("<h1> Create a new product </h1> <form> </form>");
-});
+}
 
-app.post("/products"), (req, res) => {
+const postNewProduct = (req, res) => {
+    res.status(200);
+    res.render("You created a new product")
+}
+
+const getSingleProduct = (req, res) => {
+    res.send(req.params.id);
+}
+
+const getEditProductForm = (req, res) => {
+    res.send("<h1> edit exisiting product </h1> <form> </form>");
+}
+
+const deleteSingleProduct = (req, res) => {
+    res.send("<h1>{req.params.id} has been deleted</h1>");
     res.status(200);
 }
 
-app.get("/products/:id", (req, res) => {
-    //eventually will send an individual page of products
-    res.send(req.params.id);
-});
+const putSingleProduct = () => {
+    res.status(500).json({
+        status: "fail",
+        data: {
+            message: "undefined routes",
+        },
+    });
+};
 
-app.get("/products/:id/edit", (req, res) => {
-    //eventually will send an html form to edit a specific product
-    res.send("<h1> Create a new product </h1> <form> </form>");
-});
 
-app.delete("/products/:id", (req, res) => {
-    //eventually will delete an individual product
-    res.send("<h1>{req.params.id has been deleted}</h1>");
-    res.status(200);
-});
+//create an express router
+const productRouter = express.Router();
 
-app.put("/products/:id", (req, res) => {
-    //eventually will update an individual product
-    res.status(200);
-});
+//puts efarm/products in front of all route handlers
+app.use("efarm/products", productRouter);
+
+//refectored route handlers
+//Shows all products (index.ejs)
+//post a new product to API
+productRouter.route("/").get(getAllProducts)
+    .post(postNewProduct);
+
+//sends form to create a new product
+productRouter.route("/new").get(getFormNewProduct)
+
+
+//get a single product
+//delete an individual product
+//updates an individual product
+productRouter.route("/:id").get(getSingleProduct)
+    .delete(deleteSingleProduct)
+    .put(putSingleProduct);
+
+//form to edit a specific product
+productRouter.route("/:id/edit").get(getEditProductForm);
+
+
 
 
 
