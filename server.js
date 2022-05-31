@@ -14,9 +14,10 @@ dotenv.config({
 const app = require("./app")
 
 //create a variable to represent our database
-const efarmDB = mongoose.connect(process.env.DATABASE.replace("<password>", process.env.PASSWORD)).then(() => {
-    console.log("DATABASE IS UP AND RUNNING");
-});
+const efarmDB = mongoose.connect(process.env.DATABASE.replace("<password>", process.env.PASSWORD))
+    .then(() => {
+        console.log("DATABASE IS UP AND RUNNING");
+    });
 
 //create a port 
 const port = 3000;
