@@ -25,9 +25,4 @@ app.set("view engine", "ejs");
 //puts efarm/products in front of all route handlers
 app.use("/efarm/products", productRouter);
 
-//create a port 
-const port = 3000;
-//listen to request/response cycle
-app.listen(port, (req, res) => {
-    console.log(`server started on port ${port}`)
-});
+module.exports = app;
