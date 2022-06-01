@@ -1,4 +1,5 @@
 //import the model to create new products
+const Product = require("./../models/productModel");
 const Products = require("./../models/productModel");
 
 //refactor route controllers
@@ -15,18 +16,30 @@ exports.getFormNewProduct = (req, res) => {
 }
 
 exports.postNewProduct = async(req, res) => {
-    res.status(500).json({
-        status: "error",
-        message: "undefined route"
-    });
+    try {
+        const newProduct = await Products.create(req.body)
+        res.status(201).json({
+            status: "success",
+            data: {
+                newProduct
+            }
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            message: "undefined route"
+        });
+    }
 }
 
 exports.getSingleProduct = (req, res) => {
-    res.send(req.params.id);
+    Product.findById(req.params.id, (err, foundProduct) => {
+        res.send(foundProduct);
+    });
 }
 
 exports.getEditProductForm = (req, res) => {
-    res.send("<h1> edit exisiting product </h1> <form> </form>");
+    res.render("editform");
 }
 
 exports.deleteSingleProduct = (req, res) => {
