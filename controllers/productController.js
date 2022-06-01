@@ -1,5 +1,5 @@
 //import the model to create new products
-const Product = require("./../models/productModel");
+//const Product = require("./../models/productModel");
 const Products = require("./../models/productModel");
 
 //refactor route controllers
@@ -11,6 +11,7 @@ exports.getAllProducts = async(req, res) => {
         console.log("error");
     }
 }
+
 exports.getFormNewProduct = (req, res) => {
     res.render("form");
 }
@@ -32,11 +33,15 @@ exports.postNewProduct = async(req, res) => {
     }
 }
 
-exports.getSingleProduct = (req, res) => {
-    Product.findById(req.params.id, (err, foundProduct) => {
-        res.send(foundProduct);
-    });
+exports.getSingleProduct = async(req, res) => {
+    try {
+        const item = await Products.findById(req.params.id);
+        res.render("product", { item });
+    } catch (error) {
+        console.log("error");
+    }
 }
+
 
 exports.getEditProductForm = (req, res) => {
     res.render("editform");
@@ -58,4 +63,4 @@ exports.putSingleProduct = (req, res) => {
             message: "undefined routes",
         },
     });
-};
+}

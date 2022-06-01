@@ -35,32 +35,30 @@
 
     </div>
     <div>
-        <%= productList._id%>
-            <%= productList[0]%>
-                <% if(productList.length > 0) { %>
-                    <%productList.forEach(listItem => { %>
-                        <div class="productbox" id="1">
-                            <img class="image1" src="/images/veg.jpeg">
-                            <h4>
-                                <%= listItem.name%>
-                            </h4>
-                            <p class="description">
-                                <%= listItem.description%>
-                            </p>
-                            <br>
-                            <p>Quanity Available:
-                                <%= listItem.quantity%>
-                            </p><br>
+        <% if(productList.length > 0) { %>
+            <%productList.forEach(listItem => { %>
+                <div class="productbox" id="1">
+                    <img class="image1" src="/images/veg.jpeg">
+                    <h4>
+                        <%= listItem.name%>
+                    </h4>
+                    <p class="description">
+                        <%= listItem.description%>
+                    </p>
+                    <br>
+                    <p>Quanity Available:
+                        <%= listItem.quantity%>
+                    </p><br>
 
-                            <p>Price:
-                                <%= listItem.price%>
-                            </p>
-                            <button class="cartButton">Add to Cart</button>
-                            <input>
-                        </div>
+                    <p>Price:
+                        <%= listItem.price%>
+                    </p>
+                    <button class="cartButton">Add to Cart</button>
+                    <input>
+                </div>
 
-                        <%})%>
-                            <%}%>
+                <%})%>
+                    <%}%>
 
     </div>
 
