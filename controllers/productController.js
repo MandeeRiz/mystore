@@ -47,13 +47,23 @@ exports.getEditProductForm = (req, res) => {
     res.render("editform");
 }
 
-exports.deleteSingleProduct = (req, res) => {
-    res.status(500).json({
-        status: "fail",
-        data: {
-            message: "undefined routes",
-        },
-    });
+exports.deleteSingleProduct = async(req, res) => {
+    try {
+        console.log("hi")
+        await Products.findByIdAndDelete(req.params.id)
+        res.redirect("https://localhost:3000/efarm/product")
+            //res.status(200).json({
+            //   status: "success",
+            //   message: "it worked"
+            // })
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            data: {
+                message: "error",
+            },
+        });
+    }
 }
 
 exports.putSingleProduct = (req, res) => {

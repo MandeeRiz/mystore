@@ -21,7 +21,7 @@
             <h1> Erhart Farms </h1>
         </div>
         <div class="productButton">
-            <a href="products/new"><button id="productButton"> Add New Product </button></a>
+            <a href="http://localhost:3000/efarm/products/new"><button id="productButton"> Add New Product </button></a>
         </div>
     </div>
     <div class="body">
@@ -39,9 +39,11 @@
             <%productList.forEach(listItem => { %>
                 <div class="productbox" id="1">
                     <img class="image1" src="/images/veg.jpeg">
-                    <h4>
-                        <%= listItem.name%>
-                    </h4>
+                    <a href="http://localhost:3000/efarm/products/<%=listItem._id%>">
+                        <h4>
+                            <%= listItem.name%>
+                        </h4>
+                    </a>
                     <p class="description">
                         <%= listItem.description%>
                     </p>
