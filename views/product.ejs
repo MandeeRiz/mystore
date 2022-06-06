@@ -21,7 +21,7 @@
             <h1> Erhart Farms </h1>
         </div>
         <div class="productButton">
-            <a href="products/new"><button id="productButton"> Add New Product </button></a>
+            <a href="http://localhost:3000/efarm/products/new"><button id="productButton"> Add New Product </button></a>
         </div>
     </div>
     <div>
@@ -44,7 +44,9 @@
             <button class="cartButton">Add to Cart</button>
             <input>
             <button href="http://localhost:3000/efarm/products/<%=item._id%>"> delete </button>
-            <button href="https://localhost:3000/efarm/products"> edit </button>
+            <a href="http://localhost:3000/efarm/products/<%=item._id%>/edit">
+                <button> edit </button>
+            </a>
         </div>
     </div>
 </body>

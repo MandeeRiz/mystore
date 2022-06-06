@@ -8,8 +8,8 @@
 
 #cart {
     display: flex;
-    border: red;
-    border-style: dashed;
+    border: rgb(65, 59, 59);
+    border-style: groove;
     width: 33%;
 }
 
@@ -21,8 +21,8 @@
 #title {
     display: flex;
     width: 33%;
-    border: green;
-    border-style: dashed;
+    border: rgb(65, 59, 59);
+    border-style: groove;
     text-align: center;
     justify-content: center;
 }
@@ -40,8 +40,8 @@
 .productButton {
     display: flex;
     width: 33%;
-    border: blue;
-    border-style: dashed;
+    border: rgb(65, 59, 59);
+    border-style: groove;
     justify-content: right;
 }
 
@@ -71,8 +71,8 @@
 
 .image1 {
     display: flex;
-    border-color: blueviolet;
-    border-style: dashed;
+    border-color: rgb(3, 3, 3);
+    border-style: double;
     width: 10%;
     padding: 1%;
 }
